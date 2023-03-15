@@ -35,8 +35,10 @@ def start_server():
     try:
         while True:
             # TODO: section 1 step 2 in README.md file
+            data, client_address = server_socket.recvfrom(BUFFER_SIZE)
             # expecting an 8-byte byte string for file size followed by file name
             # TODO: section 1 step 3 in README.md file
+            file_name, file_size = get_file_info(data)
             # TODO: section 1 step 4 in README.md file
             upload_file(server_socket, file_name, file_size)
     except KeyboardInterrupt as ki:
